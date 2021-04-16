@@ -1,0 +1,20 @@
+.header {
+  padding: 0 10% 0 10%;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-icon {
+  font-size: 35px;
+  vertical-align: top !important;
+}
+
+.header-icon {
+  margin: 0 10px 0 10px;
+}
+
+.header-button {
+  cursor: pointer;
+}

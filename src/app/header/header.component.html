@@ -1,0 +1,15 @@
+<mat-toolbar class="bg-dark color-light header">
+  <span>BoardGames</span>
+  <span class="example-spacer"></span>
+
+  <a mat-button [matMenuTriggerFor]="menu" #menuTrigger class="header-button">
+    <mat-icon class="header-icon">person</mat-icon>
+  </a>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openDialog()">Log in</button>
+  </mat-menu>
+
+  <a mat-button class="header-button">
+    <mat-icon class="header-icon">shopping_cart</mat-icon>
+  </a>
+</mat-toolbar>

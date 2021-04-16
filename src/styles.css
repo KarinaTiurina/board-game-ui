@@ -2,3 +2,32 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.bg-dark {
+  background-color: #020B4C;
+}
+
+.bg-semi-dark {
+  background-color: #28085B;
+}
+
+.bg-medium {
+  background-color: #490252;
+}
+
+.bg-semi-light {
+  background-color: #9807A4;
+}
+
+.bg-light {
+  background-color: #BF0767;
+}
+
+.color-light {
+  color: white;
+}
+
+.color-dark {
+  color: #020B4C;
+}
