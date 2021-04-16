@@ -18,12 +18,14 @@ import {MatButtonModule} from '@angular/material/button';
 // Custom components
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

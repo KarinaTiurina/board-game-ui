@@ -1,0 +1,8 @@
+.app-wrapper {
+  flex: 1 0 auto;
+  padding: 0 10% 0 10%;
+}
+
+app-footer {
+  flex-shrink: 0;
+}
