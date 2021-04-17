@@ -16,12 +16,16 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 
+// Material Carousel
+import { MatCarouselModule } from '@ngmodule/material-carousel';
+
 // Custom components
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CatalogComponent } from './catalog/catalog.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import { CatalogComponent } from './catalog/catalog.component';
     LoginComponent,
     FooterComponent,
     PageNotFoundComponent,
-    CatalogComponent
+    CatalogComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,8 @@ import { CatalogComponent } from './catalog/catalog.component';
     MatInputModule,
     MatButtonModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatCarouselModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

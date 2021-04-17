@@ -14,7 +14,7 @@ app-root {
 }
 
 .bg-dark {
-  background-color: #020B4C;
+  background-color: #020B4C !important;
 }
 
 .bg-semi-dark {
@@ -34,7 +34,7 @@ app-root {
 }
 
 .color-light {
-  color: white;
+  color: white !important;
 }
 
 .color-dark {
