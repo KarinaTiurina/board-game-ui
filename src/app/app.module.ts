@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -15,6 +15,11 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatChipsModule} from '@angular/material/chips'; 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatCardModule} from '@angular/material/card'; 
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 
 // Material Carousel
 import { MatCarouselModule } from '@ngmodule/material-carousel';
@@ -26,6 +31,9 @@ import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { ItemsComponent } from './catalog/items/items.component';
+import { FilterComponent } from './catalog/items/filter/filter.component';
+import { GameComponent } from './catalog/items/game/game.component';
 
 @NgModule({
   declarations: [
@@ -35,12 +43,16 @@ import { CarouselComponent } from './carousel/carousel.component';
     FooterComponent,
     PageNotFoundComponent,
     CatalogComponent,
-    CarouselComponent
+    CarouselComponent,
+    ItemsComponent,
+    FilterComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
     MatDialogModule,
@@ -51,6 +63,11 @@ import { CarouselComponent } from './carousel/carousel.component';
     HttpClientModule,
     AppRoutingModule,
     MatCarouselModule.forRoot(),
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatCardModule,
+    MatGridListModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,22 @@
+<app-filter></app-filter>
+<div *ngIf="isLoading" class="loader">
+  <mat-progress-spinner
+    class="example-margin"
+    [color]="'accent'"
+    [mode]="'indeterminate'">
+  </mat-progress-spinner>
+</div>
+<div *ngIf="categoriesList.length">
+  <div *ngFor="let category of categoriesList" class="category-group">
+    <div class="separator">{{category.name}}</div>
+    <mat-grid-list cols="5" rowHeight="330px" class="games-row" [gutterSize]="'10px'">
+      <mat-grid-tile *ngFor="let game of category.gameList" class='link-to-game'>
+          <app-game [game]="game"></app-game>
+      </mat-grid-tile>
+    </mat-grid-list>   
+  </div>
+</div>
+
+<div *ngIf="categoriesList.length == 0 && !isLoading">
+  Catalog is empty
+</div>

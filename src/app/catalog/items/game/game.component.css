@@ -1,0 +1,21 @@
+.game-card {
+  width: 100%;
+}
+
+.game-card-title {
+  font-size: 14px;
+}
+
+.game-card-image {
+  width: 150px;
+  height: 150px;
+  text-align: center;
+}
+
+.game-card-title {
+  min-height: 30px;
+}
+
+.game-card-image-wrapper {
+  text-align: center;
+}

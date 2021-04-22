@@ -1,0 +1,19 @@
+.filter-form {
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
+}
+
+.chip-list {
+  width: 90%;
+}
+
+.search-btn {
+  height: 46px;
+  width: 10%;
+  margin-top: 10px;
+}
+
+.mat-icon {
+  vertical-align: bottom !important;
+}

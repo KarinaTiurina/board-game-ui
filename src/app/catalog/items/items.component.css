@@ -1,0 +1,32 @@
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: lefts;
+  color: #6F6F6F;
+  margin-bottom: 10px;
+}
+
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px dashed #6F6F6F;
+}
+
+.separator:not(:empty)::after {
+  margin-left: .25em;
+}
+
+.link-to-game:hover {
+  cursor: pointer;
+  border: 1px solid #ef6c0071;
+  border-radius: 4px;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+}
+
+.category-group {
+  margin-bottom: 15px;
+}
