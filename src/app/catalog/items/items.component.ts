@@ -8,70 +8,70 @@ import { Category } from 'src/app/types/Game';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
-  categoriesList: Category[] = [];
-  // categoriesList: Category[] = [{
-  //   name: 'CategoryName',
-  //   idCategories: '123',
-  //   gameList: [
-  //     {
-  //       name: "GameName",
-  //       description: "test description",
-  //       price: 20
-  //     },{
-  //       name: "GameName",
-  //       description: "test description",
-  //       price: 20
-  //     },{
-  //       name: "GameName",
-  //       description: "test description",
-  //       price: 20
-  //     },{
-  //       name: "GameName",
-  //       description: "test description",
-  //       price: 20
-  //     },{
-  //       name: "GameName",
-  //       description: "test description",
-  //       price: 20
-  //     }
-  //   ]
-  // },{
-  //   name: 'CategoryName',
-  //   idCategories: '123',
-  //   gameList: [
-  //     {
-  //       name: "GameName",
-  //       description: "test description",
-  //       price: 20
-  //     },{
-  //       name: "GameName",
-  //       description: "test description",
-  //       price: 20
-  //     },{
-  //       name: "GameName",
-  //       description: "test description",
-  //       price: 20
-  //     },{
-  //       name: "GameName",
-  //       description: "test description",
-  //       price: 20
-  //     },{
-  //       name: "GameName",
-  //       description: "test description",
-  //       price: 20
-  //     }
-  //   ]
-  // }];
-  isLoading: boolean = true;
+  // categoriesList: Category[] = [];
+  categoriesList: Category[] = [{
+    name: 'CategoryName',
+    idCategories: '123',
+    gameList: [
+      {
+        name: "GameName",
+        description: "test description",
+        price: 20
+      },{
+        name: "GameName",
+        description: "test description",
+        price: 20
+      },{
+        name: "GameName",
+        description: "test description",
+        price: 20
+      },{
+        name: "GameName",
+        description: "test description",
+        price: 20
+      },{
+        name: "GameName",
+        description: "test description",
+        price: 20
+      }
+    ]
+  },{
+    name: 'CategoryName',
+    idCategories: '123',
+    gameList: [
+      {
+        name: "GameName",
+        description: "test description",
+        price: 20
+      },{
+        name: "GameName",
+        description: "test description",
+        price: 20
+      },{
+        name: "GameName",
+        description: "test description",
+        price: 20
+      },{
+        name: "GameName",
+        description: "test description",
+        price: 20
+      },{
+        name: "GameName",
+        description: "test description",
+        price: 20
+      }
+    ]
+  }];
+  isLoading: boolean = false;
 
   constructor(
     private categoryService: CategoryService
   ) { }
 
   ngOnInit(): void {
-    this.categoryService.getCategoriesWithGames(1).subscribe(categories => {
-      this.categoriesList = categories;
-      this.isLoading = false;
-    });
+    // this.categoryService.getCategoriesWithGames(1).subscribe(categories => {
+    //   this.categoriesList = categories;
+    //   this.isLoading = false;
+    // });
   }
 }

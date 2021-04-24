@@ -6,24 +6,23 @@
         [selectable]="selectable"
         [removable]="removable"
         (removed)="remove(category)">
-        {{category}}
+        {{category.name}}
         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
       </mat-chip>
       <input
         placeholder="Search category..."
-        #fruitInput
+        #categorySearchInput
         [formControl]="categoryCtrl"
         [matAutocomplete]="auto"
         [matChipInputFor]="chipList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        (matChipInputTokenEnd)="add($event)">
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes">
     </mat-chip-list>
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
       <mat-option *ngFor="let category of filteredCategories | async" [value]="category">
         {{category.name}}
       </mat-option>
     </mat-autocomplete>
-  </mat-form-field>
+  </mat-form-field>  
   <a mat-button class="search-btn">
     <mat-icon>search</mat-icon>
   </a>
