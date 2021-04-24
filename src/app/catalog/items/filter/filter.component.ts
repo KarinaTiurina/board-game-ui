@@ -1,5 +1,5 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, ElementRef, OnInit, Output, ViewChild, EventEmitter} from '@angular/core';
+import {Component, ElementRef, OnInit, Output, ViewChild, EventEmitter, Input} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
 import {Observable} from 'rxjs';
@@ -14,6 +14,7 @@ import { CategoryService } from '../../../services/category/category.service';
   styleUrls: ['filter.component.css'],
 })
 export class FilterComponent implements OnInit {
+  @Input() categories: Category[] = []
   @Output() onFilterChange = new EventEmitter<Category[]>();
 
   visible = true;
@@ -22,7 +23,6 @@ export class FilterComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   categoryCtrl = new FormControl();
   filteredCategories: Observable<Category[]>;
-  categories: Category[] = [];
   allCategories: Category[] = [];
 
   @ViewChild('categorySearchInput') categorySearchInput: ElementRef<HTMLInputElement>;

@@ -64,6 +64,7 @@ export class ItemsComponent implements OnInit {
   // }];
   isLoading: boolean = true;
   gamesList: Game[] = [];
+  initialFilter: Category[] = [];
 
   constructor(
     private categoryService: CategoryService
@@ -71,6 +72,11 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInitialCatalog();
+  }
+
+  filterByCategory(category: Category): void {
+    this.initialFilter.push(category);
+    this.onFilterChange([category]);
   }
 
   getInitialCatalog(): void {

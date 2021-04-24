@@ -16,6 +16,10 @@
   margin-left: .25em;
 }
 
+.category-more:hover {
+  cursor: pointer;
+}
+
 .link-to-game:hover {
   cursor: pointer;
   border: 1px solid #ef6c0071;

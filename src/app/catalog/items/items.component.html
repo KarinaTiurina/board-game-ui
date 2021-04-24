@@ -1,4 +1,7 @@
-<app-filter (onFilterChange)="onFilterChange($event)"></app-filter>
+<app-filter
+  (onFilterChange)="onFilterChange($event)"
+  [categories]="initialFilter">
+</app-filter>
 <div *ngIf="isLoading" class="loader">
   <mat-progress-spinner
     class="example-margin"
@@ -8,7 +11,11 @@
 </div>
 <div *ngIf="categoriesList.length && !gamesList.length">
   <div *ngFor="let category of categoriesList" class="category-group">
-    <div class="separator">{{category.name}}</div>
+    <div class="separator">
+      <span class="category-more" (click)="filterByCategory(category)" title="Click to view more games in this category.">
+        {{category.name}}
+      </span>
+    </div>
     <mat-grid-list cols="5" rowHeight="330px" class="games-row" [gutterSize]="'10px'">
       <mat-grid-tile *ngFor="let game of category.gameList" class='link-to-game'>
           <app-game [game]="game"></app-game>
