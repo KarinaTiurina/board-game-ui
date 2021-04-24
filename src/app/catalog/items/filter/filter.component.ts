@@ -1,5 +1,5 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, Output, ViewChild, EventEmitter} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
 import {Observable} from 'rxjs';
@@ -14,6 +14,8 @@ import { CategoryService } from '../../../services/category/category.service';
   styleUrls: ['filter.component.css'],
 })
 export class FilterComponent implements OnInit {
+  @Output() onFilterChange = new EventEmitter<Category[]>();
+
   visible = true;
   selectable = true;
   removable = true;
@@ -34,25 +36,29 @@ export class FilterComponent implements OnInit {
       this.allCategories = categories;
       this.filteredCategories = this.categoryCtrl.valueChanges.pipe(
         startWith(null as string),
-        map((fruit: Category | string | null) => {
-          return fruit ? this._filter(fruit) : this.allCategories.slice();
+        map((category: Category | string | null) => {
+          return category ? this._filter(category) : this.allCategories.slice();
         })
       );
     });
   }
 
-  remove(fruit: Category): void {
-    const index = this.categories.indexOf(fruit);
+  remove(category: Category): void {
+    const index = this.categories.indexOf(category);
 
     if (index >= 0) {
       this.categories.splice(index, 1);
     }
+
+    this.onFilterChange.emit(this.categories);
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.categories.push(event.option.value);
     this.categorySearchInput.nativeElement.value = '';
     this.categoryCtrl.setValue(null);
+
+    this.onFilterChange.emit(this.categories);
   }
 
   private _filter(value: Category | string): Category[] {    
@@ -63,6 +69,6 @@ export class FilterComponent implements OnInit {
     } else if (typeof value === 'object') {
       filterValue = value.name.toLowerCase();
     }
-    return this.allCategories.filter(fruit => fruit.name.toLowerCase().indexOf(filterValue) === 0);
+    return this.allCategories.filter(category => category.name.toLowerCase().indexOf(filterValue) === 0);
   }
 }

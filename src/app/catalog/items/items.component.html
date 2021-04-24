@@ -1,4 +1,4 @@
-<app-filter></app-filter>
+<app-filter (onFilterChange)="onFilterChange($event)"></app-filter>
 <div *ngIf="isLoading" class="loader">
   <mat-progress-spinner
     class="example-margin"
@@ -6,7 +6,7 @@
     [mode]="'indeterminate'">
   </mat-progress-spinner>
 </div>
-<div *ngIf="categoriesList.length">
+<div *ngIf="categoriesList.length && !gamesList.length">
   <div *ngFor="let category of categoriesList" class="category-group">
     <div class="separator">{{category.name}}</div>
     <mat-grid-list cols="5" rowHeight="330px" class="games-row" [gutterSize]="'10px'">
@@ -17,6 +17,14 @@
   </div>
 </div>
 
-<div *ngIf="categoriesList.length == 0 && !isLoading">
+<div *ngIf="gamesList.length">
+  <mat-grid-list cols="5" rowHeight="330px" class="games-row" [gutterSize]="'10px'">
+    <mat-grid-tile *ngFor="let game of gamesList" class='link-to-game'>
+        <app-game [game]="game"></app-game>
+    </mat-grid-tile>
+  </mat-grid-list>  
+</div>
+
+<div *ngIf="categoriesList.length == 0 && gamesList.length == 0 && !isLoading">
   Catalog is empty
 </div>

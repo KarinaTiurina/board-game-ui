@@ -39,6 +39,16 @@ export class CategoryService {
     );
   }
 
+  getGamesByCategories(categories: Category[]): Observable<Category[]> {
+    const requestBody = {
+      categories: categories.map(category => category.idCategories)
+    }
+
+    return this.http.post<Category[]>(`${HOST}/categories/search/list`, requestBody, this.httpOptions).pipe(
+      catchError(this.handleError<Category[]>('Failed to get games by categories', []))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
