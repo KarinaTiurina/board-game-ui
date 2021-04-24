@@ -1,0 +1,68 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.title {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+}
+
+.game-image-wrapper {
+  width: 30%;
+}
+
+.game-image {
+  width: 100%;
+}
+
+.game-main-info {
+  width: 70%;
+  padding-left: 15px;
+}
+
+.game-header-wrapper{
+  display: flex;
+  flex-direction: row;
+}
+
+.game-name {
+  width: 70%;
+}
+
+.game-rating {
+  width: 30%;
+  text-align: end;
+  padding-top: 5px;
+}
+
+.star-button {
+  width: 20px;
+  cursor: default;
+}
+
+.game-description {
+  text-align: justify;
+}
+
+.game-price-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-price {
+  font-size: 24px;
+  margin-right: 15px;
+}
+
+mat-icon {
+  vertical-align: text-bottom;
+  margin-right: 5px;
+}
+
+.game-icon {
+  margin-bottom: 10px;
+}

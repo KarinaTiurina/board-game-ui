@@ -17,9 +17,11 @@
       </span>
     </div>
     <mat-grid-list cols="5" rowHeight="330px" class="games-row" [gutterSize]="'10px'">
-      <mat-grid-tile *ngFor="let game of category.gameList" class='link-to-game'>
-          <app-game [game]="game"></app-game>
-      </mat-grid-tile>
+      <a *ngFor="let game of category.gameList" [routerLink]="['/games', game.idGame]">
+        <mat-grid-tile class='link-to-game'>
+            <app-game [game]="game"></app-game>
+        </mat-grid-tile>
+      </a>
     </mat-grid-list>   
   </div>
 </div>

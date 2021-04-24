@@ -4,9 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CatalogComponent } from './catalog/catalog.component';
+import { GamePageComponent } from './game-page/game-page.component';
 
 const routes: Routes = [
   { path: 'catalog', component: CatalogComponent },
+  { path: 'games/:id', component: GamePageComponent },
   { path: '',   redirectTo: '/catalog', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];

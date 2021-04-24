@@ -1,0 +1,65 @@
+<div *ngIf="isLoading" class="loader">
+  <mat-progress-spinner
+    class="example-margin"
+    [color]="'accent'"
+    [mode]="'indeterminate'">
+  </mat-progress-spinner>
+</div>
+
+<div *ngIf="!isLoading && game">
+  <div class="title">
+    <div class='game-image-wrapper'>
+      <img src={{image_url}} class="game-image" />
+      <div>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Categories
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-chip-list >
+            <mat-chip title="Category" *ngFor="let category of game.categories">{{category.name}}</mat-chip>
+          </mat-chip-list>
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <div class='game-main-info'>
+      <div class="game-header-wrapper">
+        <h2 class="game-name">{{game.name}}</h2>
+        <div class="game-rating">
+          <button mat-icon-button class="star-button" 
+            title="{{game.average_user_rating}}" [color]="ratingColor" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i">
+            <mat-icon>
+              {{showRatingIcon(i)}}
+            </mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="game-icon">
+        <mat-chip-list>
+          <mat-chip title="Mechanics" *ngFor="let mechanic of game.mechanics">{{mechanic.name}}</mat-chip>
+        </mat-chip-list>
+      </div>
+
+      <div title="Age" class="game-icon">
+        <mat-icon>child_care</mat-icon><span>{{game.min_age}}+</span>
+      </div>
+
+      <div title="Amount of players"  class="game-icon">
+        <mat-icon>people</mat-icon><span>{{game.min_players}}-{{game.max_players}}</span>
+      </div>
+
+      <div title="Average play time"  class="game-icon">
+        <mat-icon>hourglass_bottom</mat-icon><span>~{{game.max_playtime}}</span>
+      </div>
+
+      <p class="game-description">{{game.description_preview}}</p>
+
+      <div class='game-price-wrapper'>
+        <div class='game-price'>{{game.price}}$</div>
+        <button mat-raised-button color="accent">+ Add to cart</button>
+      </div>
+    </div>
+  </div>
+</div>

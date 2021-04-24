@@ -19,7 +19,8 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatCardModule} from '@angular/material/card'; 
 import {MatGridListModule} from '@angular/material/grid-list';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 // Material Carousel
 import { MatCarouselModule } from '@ngmodule/material-carousel';
@@ -34,6 +35,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { ItemsComponent } from './catalog/items/items.component';
 import { FilterComponent } from './catalog/items/filter/filter.component';
 import { GameComponent } from './catalog/items/game/game.component';
+import { GamePageComponent } from './game-page/game-page.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { GameComponent } from './catalog/items/game/game.component';
     CarouselComponent,
     ItemsComponent,
     FilterComponent,
-    GameComponent
+    GameComponent,
+    GamePageComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ import { GameComponent } from './catalog/items/game/game.component';
     MatAutocompleteModule,
     MatCardModule,
     MatGridListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
