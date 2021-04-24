@@ -14,7 +14,7 @@ import { CategoryService } from '../../../services/category/category.service';
   styleUrls: ['filter.component.css'],
 })
 export class FilterComponent implements OnInit {
-  @Input() categories: Category[] = []
+  @Input() categories: Category[] = [];
   @Output() onFilterChange = new EventEmitter<Category[]>();
 
   visible = true;

@@ -21,6 +21,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatBadgeModule} from '@angular/material/badge';
 
 // Material Carousel
 import { MatCarouselModule } from '@ngmodule/material-carousel';
@@ -71,7 +72,8 @@ import { GamePageComponent } from './game-page/game-page.component';
     MatCardModule,
     MatGridListModule,
     MatProgressSpinnerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
