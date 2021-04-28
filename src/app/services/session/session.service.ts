@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 import { HOST } from '../host';
@@ -22,7 +22,6 @@ export class SessionService {
   /** POST: login */
   login(user: User): Observable<any> {
     return this.http.post<User>(`${HOST}/login`, user, this.httpOptions).pipe(
-      tap((result: any) => console.log(result)),
       catchError(this.handleError<User>('login failed'))
     );
   }
@@ -38,7 +37,9 @@ export class SessionService {
       console.error(error);
 
       // Let the app keep running by returning an empty result.
-      return of(result as T);
+      return throwError({
+        status: error.status
+      });
     };
   }
 }

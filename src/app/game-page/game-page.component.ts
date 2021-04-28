@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { GameService } from '../services/game/game.service';
 
@@ -19,7 +20,8 @@ export class GamePageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private gameService: GameService
+    private gameService: GameService,
+    private _snackBar: MatSnackBar
   ) {
     this.id = this.route.snapshot.params.id;
    }
@@ -38,6 +40,22 @@ export class GamePageComponent implements OnInit {
     } else {
       return "star_border";
     }
+  }
+
+  addToCart() {
+    const cartStorage = localStorage.getItem('board-cart');
+
+    let cart: any = {};
+    if (cartStorage) {
+      cart = JSON.parse(cartStorage);
+    } else {
+      cart.items = [];
+    }
+
+    cart.items.push(this.game.idGame);
+    
+    localStorage.setItem('board-cart', JSON.stringify(cart));
+    this._snackBar.open(`Successfully added '${this.game.name}' to cart.`, 'Close');
   }
 
 }

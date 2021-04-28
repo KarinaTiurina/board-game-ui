@@ -22,6 +22,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 // Material Carousel
 import { MatCarouselModule } from '@ngmodule/material-carousel';
@@ -29,6 +30,7 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
 // Custom components
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
+import { LoginDialogComponent } from './login/login-dialog/login-dialog.component';
 import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CatalogComponent } from './catalog/catalog.component';
@@ -43,6 +45,7 @@ import { GamePageComponent } from './game-page/game-page.component';
     AppComponent,
     HeaderComponent,
     LoginComponent,
+    LoginDialogComponent,
     FooterComponent,
     PageNotFoundComponent,
     CatalogComponent,
@@ -73,7 +76,8 @@ import { GamePageComponent } from './game-page/game-page.component';
     MatGridListModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

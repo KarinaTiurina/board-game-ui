@@ -3,14 +3,23 @@
   <span class="example-spacer"></span>
 
   <a mat-button class="header-button">
-    <mat-icon class="header-icon" matBadge="0" matBadgeHidden="true" matBadgeColor="accent" matBadgePosition="below after">shopping_cart</mat-icon>
+    <mat-icon class="header-icon" [matBadge]="countInCart" matBadgeColor="accent" matBadgePosition="below after">shopping_cart</mat-icon>
   </a>
 
-  <a mat-button [matMenuTriggerFor]="menu" #menuTrigger class="header-button">
+  
+  <a *ngIf="isAuthorized" mat-button [matMenuTriggerFor]="authorizedMenu" #menuTrigger class="header-button">
     <mat-icon class="header-icon">person</mat-icon>
   </a>
 
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="openDialog()">Log in</button>
+  <a *ngIf="!isAuthorized" mat-button [matMenuTriggerFor]="notAuthorizedMenu" #menuTrigger class="header-button">
+    <mat-icon class="header-icon">login</mat-icon>
+  </a>
+
+  <mat-menu #notAuthorizedMenu="matMenu">
+    <a mat-menu-item routerLink="/login">Log in</a>
+  </mat-menu>
+
+  <mat-menu #authorizedMenu="matMenu">
+    <a mat-menu-item routerLink="/">My orders</a>
   </mat-menu>
 </mat-toolbar>
