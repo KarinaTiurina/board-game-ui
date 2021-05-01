@@ -2,16 +2,16 @@
   <span><a routerLink="/" class="nav-link color-light">BoardGames</a></span>
   <span class="example-spacer"></span>
 
-  <a mat-button class="header-button">
-    <mat-icon class="header-icon" [matBadge]="countInCart" matBadgeColor="accent" matBadgePosition="below after">shopping_cart</mat-icon>
+  <a mat-button class="header-button" routerLink="/cart">
+    <mat-icon class="header-icon" [matBadge]="getCountInCart()" [matBadgeHidden]="getCountInCart() === 0" matBadgeColor="accent" matBadgePosition="below after">shopping_cart</mat-icon>
   </a>
 
   
-  <a *ngIf="isAuthorized" mat-button [matMenuTriggerFor]="authorizedMenu" #menuTrigger class="header-button">
+  <a *ngIf="ifAuthorized()" mat-button [matMenuTriggerFor]="authorizedMenu" #menuTrigger class="header-button">
     <mat-icon class="header-icon">person</mat-icon>
   </a>
 
-  <a *ngIf="!isAuthorized" mat-button [matMenuTriggerFor]="notAuthorizedMenu" #menuTrigger class="header-button">
+  <a *ngIf="!ifAuthorized()" mat-button [matMenuTriggerFor]="notAuthorizedMenu" #menuTrigger class="header-button">
     <mat-icon class="header-icon">login</mat-icon>
   </a>
 

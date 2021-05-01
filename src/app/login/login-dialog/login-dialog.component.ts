@@ -8,6 +8,7 @@ import { User } from '../../types/User';
 })
 export class LoginDialogComponent implements OnInit {
   onLogin = new EventEmitter<User>();
+  onRegister = new EventEmitter<void>();
   username: string = '';
   password: string = '';
 
@@ -21,6 +22,10 @@ export class LoginDialogComponent implements OnInit {
       username: this.username, 
       password: this.password
     });
+  }
+
+  onRegisterClicked() {
+    this.onRegister.emit();
   }
 
 }

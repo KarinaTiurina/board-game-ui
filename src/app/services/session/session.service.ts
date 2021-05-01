@@ -11,18 +11,54 @@ import { User } from '../../types/User';
 })
 export class SessionService {
 
+  isAuthorized: boolean = false;
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    this.checkIfAuthorized();
+  }
+
+  checkIfAuthorized() {
+    const keys = Object.keys(localStorage);
+    const userTokenKey = keys.find(key => key.startsWith('board-token-'));
+    if (userTokenKey) {
+      this.isAuthorized = true;
+    }
+  }
+
+  saveToken(user: User, token: string) {
+    localStorage.setItem(`board-token-${user.username}`, token);
+    this.isAuthorized = true;
+  }
+
+  getToken(): string {
+    if (this.isAuthorized) {
+      const keys = Object.keys(localStorage);
+      const userTokenKey = keys.find(key => key.startsWith('board-token-'));
+      if (userTokenKey) {
+        return localStorage.getItem(userTokenKey);
+      }
+    }
+
+    return '';
+  }
 
   /** POST: login */
   login(user: User): Observable<any> {
     return this.http.post<User>(`${HOST}/login`, user, this.httpOptions).pipe(
       catchError(this.handleError<User>('login failed'))
+    );
+  }
+
+  /** POST: register */
+  register(user: User): Observable<any> {
+    return this.http.post<User>(`${HOST}/register`, user, this.httpOptions).pipe(
+      catchError(this.handleError<User>('Registration failed'))
     );
   }
 

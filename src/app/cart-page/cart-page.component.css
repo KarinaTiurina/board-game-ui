@@ -1,0 +1,60 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.total {
+  border: 3px double #FB6200;
+  border-radius: 4px;
+  padding: 15px 20px;
+}
+
+.game-image {
+  width: 40px;
+  height: 40px;
+}
+
+.game-image-wrapper {
+  width: 10%;
+}
+
+.game-name {
+  width: 10%;
+}
+
+.game-price {
+  width: 80%;
+  text-align: end;
+}
+
+.game-description {
+  width: 100%;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.game-title {
+  display: flex;
+  flex-direction: row;
+}
+
+.mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-button {
+  text-align: end;
+  margin-top: 20px;
+}

@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Register</h2>
+<mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput required placeholder="Enter username" type="text" [formControl]="username">
+      <mat-error *ngIf="username.invalid">{{getUsernameErrorMessage()}}</mat-error>
+    </mat-form-field>
+  <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput required placeholder="Enter email" type="email" [formControl]="email">
+      <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+    </mat-form-field>
+  <br />
+  <div *ngIf="!passwordsMatch()" class="password-match">{{getPasswordErrorMessage()}}</div>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput required type="password" placeholder="Enter password" [formControl]="password">
+      <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+    </mat-form-field>
+  <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Confirm password</mat-label>
+      <input matInput required type="password" placeholder="Enter password" [(ngModel)]="password_repeat">
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" type="submit" (click)="onRegisterClicked()">Register</button>
+</mat-dialog-actions>
+

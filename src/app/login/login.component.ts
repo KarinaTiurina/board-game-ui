@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       username: user.username,
       password: user.password
     }).subscribe(result => {
-      localStorage.setItem(`board-token-${user.username}`, result.token)
+      this.sessionService.saveToken(user, result.token);
       this._snackBar.open('Login was successfull.', 'Close');
       this.dialog.closeAll();
       this.router.navigate(['/']);
@@ -39,13 +39,20 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  onRegister() {
+    this.dialog.closeAll();
+    this.router.navigate(['/register']);
+  }
+
   openDialog() {
     const dialogRef = this.dialog.open(LoginDialogComponent);
 
-    const subscribeDialog = dialogRef.componentInstance.onLogin.subscribe(user => this.onLogin(user));
+    const subscribeLoginDialog = dialogRef.componentInstance.onLogin.subscribe(user => this.onLogin(user));
+    const subscribeRegisterDialog = dialogRef.componentInstance.onRegister.subscribe(event => this.onRegister());
 
     dialogRef.afterClosed().subscribe(result => {      
-      subscribeDialog.unsubscribe();
+      subscribeLoginDialog.unsubscribe();
+      subscribeRegisterDialog.unsubscribe();
       this.router.navigate(['/']);
     });
   }

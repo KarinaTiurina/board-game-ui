@@ -39,6 +39,9 @@ import { ItemsComponent } from './catalog/items/items.component';
 import { FilterComponent } from './catalog/items/filter/filter.component';
 import { GameComponent } from './catalog/items/game/game.component';
 import { GamePageComponent } from './game-page/game-page.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { RegistrationDialogComponent } from './registration-page/registration-dialog/registration-dialog.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { GamePageComponent } from './game-page/game-page.component';
     ItemsComponent,
     FilterComponent,
     GameComponent,
-    GamePageComponent
+    GamePageComponent,
+    CartPageComponent,
+    RegistrationPageComponent,
+    RegistrationDialogComponent
   ],
   imports: [
     BrowserModule,

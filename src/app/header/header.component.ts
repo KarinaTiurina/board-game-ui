@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { OrderService } from '../services/order/order.service';
+import { SessionService } from '../services/session/session.service';
 
 @Component({
   selector: 'app-header',
@@ -7,39 +9,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isAuthorized: boolean = false;
-  countInCart: number = null;
-
   constructor(
-    private router: Router
+    private router: Router,
+    private sessionService: SessionService,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
-    this.checkIfAuthorized();
-    this.checkCart()
-
-    this.router.events.subscribe(val => {
-      // TODO check somehow that this is a redirect
-      this.checkIfAuthorized();
-      this.checkCart();
-    });
   }
 
-  checkIfAuthorized() {
-    const keys = Object.keys(localStorage);
-    const userTokenKey = keys.find(key => key.startsWith('board-token-'));
-    if (userTokenKey) {
-      this.isAuthorized = true;
-    }
+  ifAuthorized(): boolean {
+    return this.sessionService.isAuthorized;
   }
 
-  checkCart() {
-    const keys = Object.keys(localStorage);
-    const cartStorage = keys.find(key => key === 'board-cart');
-
-    if (cartStorage) {
-      const cart = JSON.parse(localStorage.getItem('board-cart'));
-      this.countInCart = cart.items.length;
-    }
+  getCountInCart(): number {
+    return this.orderService.getCountInCart();
   }
 }

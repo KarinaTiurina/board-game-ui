@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <div class="header-wrapper">
+    <h1>Shopping cart</h1>
+    <div class="total">
+      <span>Total: {{totalSum.toFixed(2)}}$</span>
+    </div>
+  </div>
+  <div class="items" *ngIf="games.length; else emptyCart">
+    <mat-accordion>
+      <mat-expansion-panel hideToggle *ngFor="let game of games"> 
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class='game-title'>
+              <div class='game-image-wrapper'>
+                <img src={{getGameImgUrl(game)}} class="game-image" />
+              </div>
+            </div>
+          </mat-panel-title>
+          <mat-panel-description>
+            <div class="game-name">{{ game.name }}</div>
+            <div class='game-price'>{{ game.price }}$</div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="item-details">
+          <span class='game-description'>{{ game.description }}</span>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <div class="order-button">
+      <button mat-raised-button color="accent" (click)="onOrder()">Order</button>
+    </div>
+  </div>
+  <ng-template #emptyCart>
+    <p>Cart is empty. Return to <a routerLink="/">catalog</a>.</p>
+  </ng-template>
+</div>

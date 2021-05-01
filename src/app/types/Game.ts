@@ -7,7 +7,7 @@ export interface Category {
 export interface Game {
   idGame: string;
   name: string;
-  description_preview?: string;
+  description?: string;
   image_url?: string;
   price?: number;
   year_published?: number;
