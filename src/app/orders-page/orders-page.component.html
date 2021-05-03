@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <h1>My Orders</h1>
+  <div class="items" *ngIf="orders.length; else emptyCart">
+    <mat-accordion>
+      <mat-expansion-panel hideToggle *ngFor="let order of orders"> 
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <p>#{{order.orderId}}</p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <p>Total: {{getOrderTotal(order)}}$</p>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="item-details">
+          <ul>
+            <li *ngFor="let game of order.games">{{game.name}} - {{game.price}}$</li>
+          </ul>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <ng-template #emptyCart>
+    <p>There're are no orders at the moment. Return to <a routerLink="/">catalog</a>.</p>
+  </ng-template>
+</div>

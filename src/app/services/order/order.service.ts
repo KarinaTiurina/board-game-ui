@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 import { HOST } from '../host';
 import { Game } from '../../types/Game';
 import { SessionService } from '../session/session.service';
+import { Order } from 'src/app/types/Order';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ import { SessionService } from '../session/session.service';
 export class OrderService {
   countInCart: number = 0;
 
-  httpOptions = {
+  defaultHttpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
@@ -75,19 +76,35 @@ export class OrderService {
 
     return this.http.post<Game[]>(`${HOST}/games/list`, {
         gameIds: cart.items
-      }, this.httpOptions).pipe(
+      }, this.defaultHttpOptions).pipe(
         catchError(this.handleError<Game[]>('Failed to get a llist of games by id', null))
       );
   }
 
   createOrder(games: Game[]): Observable<void> {
-    let httpHeaders = {...this.httpOptions};
-    httpHeaders.headers.set('Authorization', `Bearer ${this.sessionService.getToken()}`)
+    const options: any =  {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Authorization', `Bearer ${this.sessionService.getToken()}`)
+    }
+
     return this.http.post<any>(`${HOST}/order/create`, {
       gameIds: games.map(game => game.idGame)
-    }, this.httpOptions).pipe(
+    }, options).pipe(
       catchError(this.handleError<any>('Failed to create an order', null))
     );
+  }
+
+  getOrders(): Observable<Order[]> {
+    const options: any =  {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Authorization', `Bearer ${this.sessionService.getToken()}`)
+    }
+    
+    return this.http.get<Order[]>(`${HOST}/orders`, options).pipe(
+      catchError(this.handleError<any>('Failed to get a list of orders', null))
+    )
   }
 
   /**
@@ -101,7 +118,9 @@ export class OrderService {
       console.error(error);
 
       // Let the app keep running by returning an empty result.
-      return of(result as T);
+      return throwError({
+        status: error.status
+      });
     };
   }
 }

@@ -23,6 +23,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
 
 // Material Carousel
 import { MatCarouselModule } from '@ngmodule/material-carousel';
@@ -42,6 +44,10 @@ import { GamePageComponent } from './game-page/game-page.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { RegistrationDialogComponent } from './registration-page/registration-dialog/registration-dialog.component';
+import { OrdersPageComponent } from './orders-page/orders-page.component';
+import { LogoutComponent } from './logout/logout.component';
+import { UsersPageComponent } from './users-page/users-page.component';
+import { EditUserDialogComponent } from './users-page/edit-user-dialog/edit-user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +65,11 @@ import { RegistrationDialogComponent } from './registration-page/registration-di
     GamePageComponent,
     CartPageComponent,
     RegistrationPageComponent,
-    RegistrationDialogComponent
+    RegistrationDialogComponent,
+    OrdersPageComponent,
+    LogoutComponent,
+    UsersPageComponent,
+    EditUserDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +93,9 @@ import { RegistrationDialogComponent } from './registration-page/registration-di
     MatProgressSpinnerModule,
     MatExpansionModule,
     MatBadgeModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDividerModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

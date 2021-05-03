@@ -62,6 +62,25 @@ export class SessionService {
     );
   }
 
+  logout(): Observable<any> {
+    const keys = Object.keys(localStorage);
+    const userTokenKey = keys.find(key => key.startsWith('board-token-'));
+    if (userTokenKey) {
+      const token = localStorage.getItem(userTokenKey);
+      localStorage.removeItem(userTokenKey);
+
+      const options: any =  {
+        headers: new HttpHeaders()
+          .set('Content-Type', 'application/json')
+          .set('Authorization', `Bearer ${this.getToken()}`)
+      }
+      
+      return this.http.get<any>(`${HOST}/logout`, options).pipe(
+        catchError(this.handleError<any>('Failed to logout', null))
+      )
+    }
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
