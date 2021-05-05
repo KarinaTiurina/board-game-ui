@@ -22,39 +22,45 @@
 }
 
 .game-image-wrapper {
-  width: 10%;
+  margin-right: 5px;
 }
 
 .game-name {
-  width: 10%;
+  width: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .game-price {
-  width: 80%;
-  text-align: end;
+  width: 30%;
+  text-align: right;
 }
-
-.game-description {
-  width: 100%;
-}
-
-.item-details {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-.game-title {
-  display: flex;
-  flex-direction: row;
-}
-
-.mat-expansion-panel-header-description {
-  justify-content: space-between;
-  align-items: center;
-}
-
 .order-button {
   text-align: end;
   margin-top: 20px;
+}
+
+.ul-games {
+  padding-inline-start: 0px;
+}
+
+.li-game {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  background-color: white;
+  padding: 5px 10px;
+  width: 100;
+}
+
+.game-description {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }

@@ -44,10 +44,10 @@ export class CartPageComponent implements OnInit {
       this.router.navigate(['/login']);
     }
 
-    // KDBG this cleans cart even if request fails
     this.orderService.createOrder(this.games).subscribe(result => {
       this._snackBar.open('Successfully created an order.', 'Close');
       this.orderService.cleanCart();
+      this.router.navigate(['/orders']);
     }, error => {
       this._snackBar.open('Something went wrong.', 'Close');
     });

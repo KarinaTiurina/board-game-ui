@@ -68,11 +68,12 @@ export class SessionService {
     if (userTokenKey) {
       const token = localStorage.getItem(userTokenKey);
       localStorage.removeItem(userTokenKey);
+      this.isAuthorized = false;
 
       const options: any =  {
         headers: new HttpHeaders()
           .set('Content-Type', 'application/json')
-          .set('Authorization', `Bearer ${this.getToken()}`)
+          .set('Authorization', `Bearer ${token}`)
       }
       
       return this.http.get<any>(`${HOST}/logout`, options).pipe(
