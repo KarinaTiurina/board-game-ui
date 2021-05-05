@@ -1,1 +1,21 @@
-<p>edit-user-dialog works!</p>
+<h2 mat-dialog-title>Edit user</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Username</mat-label>
+    <input matInput placeholder="Enter username" type="text" [(ngModel)]="username">
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" placeholder="Enter email" [(ngModel)]="email">
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>Role</mat-label>
+    <input matInput type="text" placeholder="Enter role" [(ngModel)]="user_role">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" (click)="onEditUser()">Save</button>
+</mat-dialog-actions>

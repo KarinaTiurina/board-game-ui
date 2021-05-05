@@ -82,6 +82,30 @@ export class SessionService {
     }
   }
 
+  updateUser(userID: number, body: Partial<User>): Observable<any> {
+    const options: any =  {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Authorization', `Bearer ${this.getToken()}`)
+    }
+
+    return this.http.post<any>(`${HOST}/user/${userID}`, body, options).pipe(
+      catchError(this.handleError<any>('Failed to update user'))
+    );
+  }
+
+  getUsers(): Observable<User[]> {
+    const options: any =  {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Authorization', `Bearer ${this.getToken()}`)
+    }
+
+    return this.http.get<User[]>(`${HOST}/users`, options).pipe(
+      catchError(this.handleError<any>('Failed to get list of users', null))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
